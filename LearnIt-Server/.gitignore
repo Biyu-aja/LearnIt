@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# Environment Variables
+.env
+
+# Storage & Uploads
+storage/uploads/*
+!storage/uploads/.gitkeep
+storage/chroma_db/*
+!storage/chroma_db/.gitkeep
+
+# Prisma
+prisma/*.db
+prisma/*.db-journal
+
+# IDEs
+.vscode/
+.idea/

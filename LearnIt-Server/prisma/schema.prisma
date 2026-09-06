@@ -1,0 +1,46 @@
+generator client {
+  provider             = "prisma-client-py"
+  recursive_type_depth = 5
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Document {
+  id           String        @id @default(uuid())
+  title        String
+  filename     String
+  fileSize     Int
+  pageCount    Int           @default(0)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  chatSessions ChatSession[]
+
+  @@map("documents")
+}
+
+model ChatSession {
+  id         String        @id @default(uuid())
+  title      String        @default("Obrolan Baru")
+  documentId String?
+  document   Document?     @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  messages   ChatMessage[]
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+
+  @@map("chat_sessions")
+}
+
+model ChatMessage {
+  id        String      @id @default(uuid())
+  sessionId String
+  session   ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  role      String // "user" atau "assistant"
+  content   String
+  sources   Json? // Referensi potongan teks / halaman yang digunakan AI
+  createdAt DateTime    @default(now())
+
+  @@map("chat_messages")
+}
