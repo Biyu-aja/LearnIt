@@ -55,5 +55,5 @@ Aplikasi web dapat diakses di browser pada [http://localhost:5173](http://localh
 ## 📚 Dokumentasi Lebih Rinci
 
 Silakan kunjungi README di masing-masing direktori untuk panduan setup lengkap:
-- 📖 [Panduan Setup & Dokumentasi Client](./client/README.md)
-- 📖 [Panduan Setup & Dokumentasi Server](./server/README.md)
+- 📖 [Panduan Setup & Dokumentasi Client](./Client/README.md)
+- 📖 [Panduan Setup & Dokumentasi Server](./Server/README.md)
